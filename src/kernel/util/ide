@@ -1,0 +1,33 @@
+#! /bin/sh
+
+attach() {
+  local session="${1}"
+  exec tmux attach -d -t "${session}"
+}
+
+create() {
+  local session="${1}"
+
+  tmux new  -dc "$(pwd)" -s "${session}" vim
+
+  [ -n "${ARCH}" ] && \
+    tmux set-environment -t "${session}" ARCH "${ARCH}"
+
+  tmux setw remain-on-exit on
+  tmux bind k kill-window
+  tmux bind r respawn-pane
+
+  tmux splitw -dhp 33 make run
+  tmux splitw -dvp 33 make debug
+}
+
+has() {
+  local session="${1}"
+  tmux has -t "${session}" &>/dev/null
+}
+
+SESSION="${1:-trix}"
+
+has "${SESSION}" || \
+  create "${SESSION}"
+attach "${SESSION}"
