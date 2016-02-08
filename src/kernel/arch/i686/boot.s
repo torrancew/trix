@@ -27,6 +27,10 @@ _start:
 	// Load Stack Pointer
 	movl $stack_top, %esp
 
+	// Preserve Multiboot Data
+	pushl %ebx
+	pushl %eax
+
 	// Call C Code
 	call kernel_main
 

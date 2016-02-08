@@ -25,7 +25,7 @@ CFLAGS  := $(CFLAGS) -Iinclude -I$(ARCHDIR)/include
 ASFLAGS := $(ASFLAGS)
 LDFLAGS := $(LDFLAGS) -Tarch/$(ARCH)/config/linker.ld -z max-page-size=0x1000
 QFLAGS  := $(QFLAGS) -nographic -cpu $(QCPU)
-DBFLAGS := -x util/helpers.gdb
+DBFLAGS := -x util/gdb/helpers.gdb
 
 SRCDIR  := $(CURDIR)
 ARCHDIR := $(SRCDIR)/arch/$(ARCH)

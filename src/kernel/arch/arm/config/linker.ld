@@ -4,8 +4,8 @@ ENTRY(_start)
 /* Organize Final Image */
 SECTIONS
 {
-	/* Start at 32KiB */
-	. = 0x00008000;
+	/* Start at 1MiB */
+	. = 0x00100000;
 
 	/* Executable Code */
 	.text BLOCK(4K) : ALIGN(4K)
