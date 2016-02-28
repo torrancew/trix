@@ -27,12 +27,6 @@ LDFLAGS := $(LDFLAGS) -Tarch/$(ARCH)/config/linker.ld -z max-page-size=0x1000
 QFLAGS  := $(QFLAGS) -nographic -cpu $(QCPU)
 DBFLAGS := -x util/gdb/helpers.gdb
 
-SRCDIR  := $(CURDIR)
-ARCHDIR := $(SRCDIR)/arch/$(ARCH)
-TOPDIR  := $(SRCDIR)/../..
-OBJDIR  := $(SRCDIR)/../../obj/$(ARCH)/kernel
-BINDIR  := $(SRCDIR)/../../bin/$(ARCH)/kernel
-
 KRN_SRCS := $(wildcard $(SRCDIR)/*.c)
 KRN_ARCH := $(wildcard $(ARCHDIR)/*.c)
 KRN_ASMS := $(wildcard $(ARCHDIR)/*.s)
