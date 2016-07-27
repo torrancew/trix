@@ -22,7 +22,7 @@ stack_top:
 
 /* Linker Entry Point */
 .global _start
-.type   _start, @function
+.type   _start, "function"
 _start:
 	// Load Stack Pointer
 	movl $stack_top, %esp

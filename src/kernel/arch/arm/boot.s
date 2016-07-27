@@ -13,7 +13,7 @@
 .long CHECKSUM
 
 /* Stack Allocation */
-.section .bss.stack
+.section .bss.stack, "w", %nobits
 stack_bottom:
 .skip 16384
 stack_top:
@@ -22,6 +22,7 @@ stack_top:
 
 /* Linker Entry Point */
 .global _start
+.type   _start, "function"
 _start:
   // Load Stack Pointer
   ldr sp, =stack_top
