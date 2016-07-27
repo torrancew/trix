@@ -1,0 +1,10 @@
+-target
+arm-none-eabi
+-Iarch/arm/include
+-Iinclude
+-Wall
+-Werror
+-fpic
+-ffreestanding
+-fno-builtin
+-nostdlibinc

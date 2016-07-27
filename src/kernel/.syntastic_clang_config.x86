@@ -1,0 +1,10 @@
+-target
+i686-elf
+-Iarch/i686/include
+-Iinclude
+-Wall
+-Werror
+-fpic
+-ffreestanding
+-fno-builtin
+-nostdlibinc

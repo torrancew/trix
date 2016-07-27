@@ -1,0 +1,19 @@
+let g:syntastic_c_checkers = ['gcc', 'clang_check', 'clang_tidy']
+let g:syntastic_c_compiler = 'clang'
+
+let g:syntastic_c_compiler_options        = '-std=c11'
+let g:syntastic_c_no_default_include_dirs = 1
+
+if ($ARCH == "arm")
+  let g:syntastic_asm_compiler  = 'arm-none-eabi-as'
+
+  let g:syntastic_c_config_file           = '.syntastic_clang_config.arm'
+  let g:syntastic_clang_check_config_file = '.syntastic_clang_config.arm'
+  let g:syntastic_clang_tidy_config_file  = '.syntastic_clang_config.arm'
+else
+  let g:syntastic_asm_compiler  = 'i686-elf-as'
+
+  let g:syntastic_c_config_file           = '.syntastic_clang_config.x86'
+  let g:syntastic_clang_check_config_file = '.syntastic_clang_config.x86'
+  let g:syntastic_clang_tidy_config_file  = '.syntastic_clang_config.x86'
+endif
