@@ -1,5 +1,6 @@
 #include <multiboot.h>
 #include <panic.h>
+#include <platform.h>
 #include <serial.h>
 
 #if defined(__linux__)
@@ -12,6 +13,8 @@ void kernel_main(uint32_t magic, uint32_t mb_info_addr) {
 
   serial_init();
   panic_init(&serial_puts);
+
+  platform_init();
 
   if (magic == MB_MAGIC_LOADER) {
     mbinf = (multiboot_info_t*)(mb_info_addr);
