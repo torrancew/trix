@@ -24,8 +24,8 @@ stack_top:
 .global _start
 .type   _start, "function"
 _start:
-  // Load Stack Pointer
-  ldr sp, =stack_top
+	// Load Stack Pointer
+	ldr sp, =stack_top
 
 	// Call kernel_main
 	ldr r4, =kernel_main
