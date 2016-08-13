@@ -9,7 +9,7 @@ BINDIR  := $(TOPDIR)/obj/$(ARCH)/kernel
 CFLAGS  ?= -O0 -g
 ASFLAGS ?= --gstabs
 LDFLAGS ?=
-QFLAGS  ?= -S -s
+QFLAGS  ?= -s -S -monitor unix:qemu.sock,server,nowait
 
 include $(ARCHDIR)/config/Config.mk
 
