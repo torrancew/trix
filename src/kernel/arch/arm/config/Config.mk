@@ -7,6 +7,6 @@ QCPU  := arm1176
 CFLAGS  := $(CFLAGS) -target $(TARGET)
 ASFLAGS := $(ASFLAGS)
 LDFLAGS := $(LDFLAGS)
-QFLAGS  := $(QFLAGS) -machine raspi2 -nographic -S
+QFLAGS  := $(QFLAGS) -machine raspi2
 
 # vim: set ts=2 sts=2 sw=2 noet:
