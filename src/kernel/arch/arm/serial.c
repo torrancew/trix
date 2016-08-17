@@ -4,8 +4,8 @@
 
 /* GPIO&UART Port Base Addresses */
 enum {
-  GPIO  = 0x20200000,
-  UART0 = 0x20201000,
+  GPIO  = 0x3f200000,
+  UART0 = 0x3f201000,
 };
 
 /* GPIO Offsets */
