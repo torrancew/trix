@@ -4,7 +4,7 @@ SRCDIR  := $(CURDIR)
 ARCHDIR := $(SRCDIR)/arch/$(ARCH)
 TOPDIR  := $(SRCDIR)/../..
 OBJDIR  := $(TOPDIR)/obj/$(ARCH)/kernel
-BINDIR  := $(TOPDIR)/obj/$(ARCH)/kernel
+BINDIR  := $(TOPDIR)/bin/$(ARCH)/kernel
 
 CFLAGS  ?= -O0 -g
 ASFLAGS ?= --gstabs
