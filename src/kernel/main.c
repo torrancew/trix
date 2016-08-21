@@ -1,3 +1,4 @@
+#include <panic.h>
 #include <serial.h>
 #include <multiboot.h>
 
@@ -10,6 +11,7 @@ void kernel_main(uint32_t magic, uint32_t mb_info_addr) {
   multiboot_info_t* mbinf = NULL;
 
   serial_init();
+  panic_init(&serial_puts);
 
   if (magic == MB_MAGIC_LOADER) {
     mbinf = (multiboot_info_t*)(mb_info_addr);
