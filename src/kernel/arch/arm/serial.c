@@ -51,9 +51,10 @@ void serial_init(void) {
   delay(150);                   // Delay 150 Cycles
 
   mmio_write(GPIO + PUD_CLK0, (1 << 14) | (1 << 15)); // Disable Pull Up/Down for Pins 14&15
-  delay(150);                                         // Delay 150 Cycles
-  mmio_write(GPIO + PUD_CLK0, 0x00);                  // Flush Changes
-  mmio_write(UART0 + ICR, 0x07ff);                    // Clear Pending Interrupts
+
+  delay(150);                          // Delay 150 Cycles
+  mmio_write(GPIO + PUD_CLK0, 0x00);   // Flush Changes
+  mmio_write(UART0 + ICR,     0x07ff); // Clear Pending Interrupts
 
   mmio_write(UART0 + IBRD, 0x01); // Set Baud Rate Numerator
   mmio_write(UART0 + FBRD, 0x28); // Set Baud Rate Divisor
@@ -74,7 +75,7 @@ char serial_getc(void) {
   return mmio_read(UART0 + DR);
 }
 
-void serial_putc(unsigned char c) {
+void serial_putc(const unsigned char c) {
   while (mmio_read(UART0 + FR) & (1 << 5)) {
     // Wait for UART0
   }

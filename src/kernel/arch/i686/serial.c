@@ -9,8 +9,8 @@ enum {
 
 /* RS-232 DLAB I/O Port Offsets */
 enum {
-  DVLS = 0, // LSB of Divisor (when DLAB is set)
-  DVMS,     // MSB of Divisor (when DLAB is set)
+  LSB = 0, // LSB of Divisor (when DLAB is set)
+  MSB,     // MSB of Divisor (when DLAB is set)
 };
 
 /* RS-232 I/O Port Offsets */
@@ -28,8 +28,8 @@ enum {
 void serial_init(void) {
   outb(COM1 + INTR, 0x00); // Disable Interrupts
   outb(COM1 + LNCR, 0x80); // Enable DLAB
-  outb(COM1 + DATA, 0x01); // 115200 Baud (LSB => 1)
-  outb(COM1 + INTR, 0x00); //             (MSB => 0)
+  outb(COM1 + LSB,  0x01); // 115200 Baud (LSB => 1)
+  outb(COM1 + MSB,  0x00); //             (MSB => 0)
   outb(COM1 + LNCR, 0x03); // 8n1
   outb(COM1 + IFCR, 0xc7); // Enable Interrupts
   outb(COM1 + MDCR, 0x0b); // Set RTS/DSR
@@ -37,7 +37,7 @@ void serial_init(void) {
 
 char serial_getc(void) { return (char)(inb(COM1 + DATA)); }
 
-void serial_putc(unsigned char c) { outb(COM1 + DATA, c); }
+void serial_putc(const unsigned char c) { outb(COM1 + DATA, c); }
 
 void serial_puts(const char* str) {
   serial_write(str, strlen(str));
@@ -45,8 +45,7 @@ void serial_puts(const char* str) {
 }
 
 void serial_write(const char* str, size_t sz) {
-  int i;
-  for (i = 0; i < sz; i++) {
+  for (int i = 0; i < sz; i++) {
     serial_putc(str[i]);
   }
 }
