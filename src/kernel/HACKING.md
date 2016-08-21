@@ -4,10 +4,12 @@
 
 This is the source code for the Trix kernel. It is intended to be built with
 the following toolchain:
+
   * clang
   * GNU binutils
 
 The following tools are recommended to enable easier debugging:
+
   * gdb
   * QEMU
 
@@ -16,6 +18,7 @@ compiler can be used for all supported platforms, requiring developers install
 only a new binutils+GDB to build for a different platform.
 
 The following two targets are supported:
+
   * `i686-elf`
   * `arm-none-eabi`
 
