@@ -15,12 +15,8 @@ static inline uint16_t inw(uint16_t port) {
   return word;
 }
 
-static inline void outb(uint16_t port, uint8_t byte) {
-  __asm__("outb %%al, %%dx" : : "d"(port), "a"(byte));
-}
+static inline void outb(uint16_t port, uint8_t byte) { __asm__("outb %%al, %%dx" : : "d"(port), "a"(byte)); }
 
-static inline void outw(uint16_t port, uint16_t word) {
-  __asm__("outw %%ax, %%dx" : : "d"(port), "a"(word));
-}
+static inline void outw(uint16_t port, uint16_t word) { __asm__("outw %%ax, %%dx" : : "d"(port), "a"(word)); }
 
 #endif

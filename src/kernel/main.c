@@ -1,6 +1,6 @@
+#include <multiboot.h>
 #include <panic.h>
 #include <serial.h>
-#include <multiboot.h>
 
 #if defined(__linux__)
 #error "This kernel cannot be built with a compiler configured for Linux"

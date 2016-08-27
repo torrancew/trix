@@ -28,8 +28,8 @@ enum {
 void serial_init(void) {
   outb(COM1 + INTR, 0x00); // Disable Interrupts
   outb(COM1 + LNCR, 0x80); // Enable DLAB
-  outb(COM1 + LSB,  0x01); // 115200 Baud (LSB => 1)
-  outb(COM1 + MSB,  0x00); //             (MSB => 0)
+  outb(COM1 + LSB, 0x01);  // 115200 Baud (LSB => 1)
+  outb(COM1 + MSB, 0x00);  //             (MSB => 0)
   outb(COM1 + LNCR, 0x03); // 8n1
   outb(COM1 + IFCR, 0xc7); // Enable Interrupts
   outb(COM1 + MDCR, 0x0b); // Set RTS/DSR

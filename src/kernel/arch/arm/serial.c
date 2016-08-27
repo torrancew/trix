@@ -38,10 +38,7 @@ enum {
 
 /* Delay for <count> CPU Cycles */
 static void delay(uint32_t count) {
-  __asm__ __volatile__("__delay_%=: subs %0, %0, #1; bne __delay_%="
-                       :
-                       : "r"(count)
-                       : "cc", "memory");
+  __asm__ __volatile__("__delay_%=: subs %0, %0, #1; bne __delay_%=" : : "r"(count) : "cc", "memory");
 }
 
 /* Enable UART0 */
@@ -52,9 +49,9 @@ void serial_init(void) {
 
   mmio_write(GPIO + PUD_CLK0, (1 << 14) | (1 << 15)); // Disable Pull Up/Down for Pins 14&15
 
-  delay(150);                          // Delay 150 Cycles
-  mmio_write(GPIO + PUD_CLK0, 0x00);   // Flush Changes
-  mmio_write(UART0 + ICR,     0x07ff); // Clear Pending Interrupts
+  delay(150);                        // Delay 150 Cycles
+  mmio_write(GPIO + PUD_CLK0, 0x00); // Flush Changes
+  mmio_write(UART0 + ICR, 0x07ff);   // Clear Pending Interrupts
 
   mmio_write(UART0 + IBRD, 0x01); // Set Baud Rate Numerator
   mmio_write(UART0 + FBRD, 0x28); // Set Baud Rate Divisor
@@ -62,8 +59,7 @@ void serial_init(void) {
   mmio_write(UART0 + LCRH, (1 << 4) | (1 << 5) | (1 << 6)); // Enable FIFO & 8n1
 
   // Mask All Interrupts
-  mmio_write(UART0 + IMSC, (1 << 1) | (1 << 4) | (1 << 5) | (1 << 6) | (1 << 7) | (1 << 8) |
-                               (1 << 9) | (1 << 10));
+  mmio_write(UART0 + IMSC, (1 << 1) | (1 << 4) | (1 << 5) | (1 << 6) | (1 << 7) | (1 << 8) | (1 << 9) | (1 << 10));
 
   mmio_write(UART0 + CR, (1 << 0) | (1 << 8) | (1 << 9)); // Enable Tx&Rx
 }
