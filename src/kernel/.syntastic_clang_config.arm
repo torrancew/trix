@@ -1,5 +1,6 @@
 -target
 arm-none-eabi
+-I/usr/lib/clang/6.0.0/include
 -Iarch/arm/include
 -Iinclude
 -Wall
