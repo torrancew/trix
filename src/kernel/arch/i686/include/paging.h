@@ -37,7 +37,6 @@ typedef struct _pt_entry {
 typedef page_tbl_entry_t page_tbl_t[1024];
 
 void paging_init(void);
-void page_dir_entry_init(page_dir_entry_t*, bool, bool, uint32_t);
-void page_tbl_entry_init(page_tbl_entry_t*, bool, bool, uint32_t);
+void page_dir_load(const page_dir_t* const);
 
 #endif
