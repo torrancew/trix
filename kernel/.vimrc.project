@@ -22,3 +22,5 @@ else
   let g:syntastic_clang_check_config_file = '.syntastic_clang_config.x86'
   let g:syntastic_clang_tidy_config_file  = '.syntastic_clang_config.x86'
 endif
+
+noremap <F5> :CMake<CR>:Dispatch<CR>

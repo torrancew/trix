@@ -1,3 +1,20 @@
+# Generate C API Docs with Doxygen
+doxygen_add_docs(
+  doxygen
+  ${PROJECT_SOURCE_DIR}
+  COMMENT "Generating API docs with Doxygen"
+)
+
+# Generate Polished HTML docs with Sphinx
+sphinx_add_docs(
+  kernel-docs
+  html
+  "${CMAKE_CURRENT_SOURCE_DIR}/docs"
+)
+
+add_dependencies(kernel-docs doxygen)
+
+# Set Kernel Compile Options
 add_compile_options(
   $<$<COMPILE_LANGUAGE:C>:-std=c11>
   $<$<COMPILE_LANGUAGE:C>:-Wall>
